@@ -1,2 +1,2 @@
-# Coursework-ARiP
-Coursework - ARiP - 4 course - E-Library
+# Coursework-ARiS
+Coursework - ARiS - 4 course - E-Library

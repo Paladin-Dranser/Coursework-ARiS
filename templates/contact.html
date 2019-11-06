@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>I really hate Web</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="scripts/jquery.min.cs"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/internal.css">
+  -->
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Antoś's Library</h1>      
+    <p>I Hate Web</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{{ url_for('main_page') }}">Home</a></li>
+        <li><a href="#">Catalog</a></li>
+        <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Your Account</a></li>
+        <li><a href="#">Bookmarks</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+Owner: Antoś Bućĸo<br>
+Address: Minsk, F. Skaryny 8/1, 208(2)<br>
+Mobile: +375 (33) 123-45-67
+
+<br><br>
+<br><br>
+
+<footer class="container-fluid text-center">
+  <p>Antoś's Library Copyright</p>  
+</footer>
+
+</body>
+</html>
