@@ -5,7 +5,7 @@
 }
 
 /* Remove the jumbotron's default bottom margin */ 
- .jumbotron {
+.jumbotron {
   margin-bottom: 0;
 }
 
@@ -15,3 +15,7 @@ footer {
   padding: 25px;
 }
 
+.logo {
+  width: 30px;
+  height: 30px;
+}

@@ -10,5 +10,9 @@ def main_page():
 def contact_page():
     return render_template('contact.html')
 
+@app.route("/login")
+def login_page():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
