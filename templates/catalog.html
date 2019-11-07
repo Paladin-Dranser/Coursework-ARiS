@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>I really hate Web</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/internal.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Antoś's Library</h1>      
+    <p>I Hate Web</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url_for('main_page') }}"><img class=logo src="{{ url_for('static', filename='images/bsac_logo.svg') }}"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('main_page') }}">Home</a></li>
+        <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('login_page') }}">Your Account</a></li>
+        <li><a href="#">Bookmarks</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Book name</div>
+        <div class="panel-body">
+          <a href="#">
+            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+          </a>
+        </div>
+        <div class="panel-footer">{{ genre }}</div>
+      </div>
+    </div>
+</div><br><br>
+
+<footer class="container-fluid text-center">
+  <p>Antoś's Library Copyright</p>  
+</footer>
+
+</body>
+</html>
