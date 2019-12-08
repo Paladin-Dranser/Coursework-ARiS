@@ -28,6 +28,12 @@
         <li class="active"><a href="{{ url_for('main_page') }}">Home</a></li>
         <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
       </ul>
+      <form method="POST">
+        <ul class="nav navbar-nav navbar-right">
+          <li><input name="search"></li>
+          <li><input type=submit value=search></li>
+        </ul>
+      </form>
     </div>
   </div>
 </nav>
