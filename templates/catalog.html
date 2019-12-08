@@ -40,7 +40,7 @@
 {% for book in books_info | batch(3) %}
 <div class="container">    
   <div class="row">
-    {% for name, link, cover in book %}
+    {% for name, link, cover, author, genre in book %}
     <div class="col-sm-4">
       <div class="panel panel-primary">
         <div class="panel-heading">{{ name }}</div>
@@ -49,7 +49,7 @@
             <img src="{{ cover }}" class="img-responsive" style="width:100%" alt="Image">
           </a>
         </div>
-        <div class="panel-footer">{{ genre }}</div>
+        <div class="panel-footer">{{ genre }} | {{ author }}</div>
       </div>
     </div>
     {% endfor %}
