@@ -26,7 +26,7 @@ def search(book_name):
     book_name = '%' + book_name + '%'
     cursor = mariadb_connection.cursor()
     cursor.execute("SELECT name, pdf_link, image_link FROM books \
-        WHERE name LIKE %s", (book_name,)
+        WHERE LOWER(name) LIKE LOWER(%s)", (book_name,)
     )
 
     books_info = cursor.fetchall()
@@ -45,48 +45,80 @@ def main_page():
 
     return render_template('main.html')
 
-@app.route("/search")
+@app.route("/search", methods=['GET', 'POST'])
 def search_page():
-    book_name = request.args['book_name']
+    if request.method == 'POST':
+        book_name = request.form['search']
+    else:
+        book_name = request.args['book_name']
+
     books_info = search(book_name)
     return render_template('catalog.html', genre='', books_info=books_info)
 
-@app.route("/contact")
+@app.route("/contact", methods=['GET', 'POST'])
 def contact_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     return render_template('contact.html')
 
-@app.route("/fantasy")
+@app.route("/fantasy", methods=['GET', 'POST'])
 def fantasy_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'Fantasy'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
-@app.route("/novels")
+@app.route("/novels", methods=['GET', 'POST'])
 def novel_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'Novel'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
-@app.route("/tales")
+@app.route("/tales", methods=['GET', 'POST'])
 def tale_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'Tale'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
-@app.route("/math")
+@app.route("/math", methods=['GET', 'POST'])
 def math_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'Math'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
-@app.route("/it")
+@app.route("/it", methods=['GET', 'POST'])
 def it_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'IT'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
-@app.route("/web")
+@app.route("/web", methods=['GET', 'POST'])
 def web_page():
+    if request.method == 'POST':
+        book_name = request.form['search']
+        return redirect(url_for('search_page', book_name=book_name))
+
     genre = 'Web'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
