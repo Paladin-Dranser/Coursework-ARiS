@@ -89,7 +89,7 @@ def tale_page():
         book_name = request.form['search']
         return redirect(url_for('search_page', book_name=book_name))
 
-    genre = 'Tale'
+    genre = 'Fairy tales'
     books_info = get_books_by_genre(genre)
     return render_template('catalog.html', genre=genre, books_info=books_info)
 
