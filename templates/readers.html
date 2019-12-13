@@ -8,6 +8,16 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/internal.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
+
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+  }
+  </style>
 </head>
 <body>
 
@@ -26,8 +36,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('main_page') }}">Home</a></li>
-        <li class="active"><a href="{{ url_for('contact_page') }}">Contact</a></li>
-        <li><a href="{{ url_for('readers_page') }}">Readers</a></li>
+        <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+        <li class="active"><a href="{{ url_for('readers_page') }}">Readers</a></li>
         <li><a href="{{ url_for('registration_page') }}">Registration</a></li>
       </ul>
       <form method="POST" class="nav navbar-nav navbar-right">
@@ -41,12 +51,21 @@
   </div>
 </nav>
 
-Owner: Antoś Bućĸo<br>
-Address: Minsk, F. Skaryny 8/1, 208(2)<br>
-Mobile: +375 (33) 123-45-67
+This is only a feature to check we can add reader to DataBase.
+We don't write reader's password here in real life!
 
-<br><br>
-<br><br>
+<table>
+<tr>
+    <th>Username</th>
+    <th>Password</th>
+</tr>
+{% for username, password in readers %}
+<tr>
+    <td>{{ username }}</td>
+    <td>{{ password }}</td>
+</tr>
+{% endfor %}
+</table>
 
 <footer class="container-fluid text-center">
   <p>Antoś's Library Copyright</p>  

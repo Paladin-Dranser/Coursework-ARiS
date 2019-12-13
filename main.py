@@ -62,7 +62,31 @@ def search_by_author(author):
     cursor.close()
 
     return books_info
-    
+
+def get_readers_from_db():
+    cursor = mariadb_connection.cursor()
+
+    cursor.execute("SELECT username, password FROM readers")
+
+    readers = cursor.fetchall()
+    cursor.close()
+
+    return readers
+
+def add_reader_to_db(username, password):
+    readers = get_readers_from_db()
+
+    for user, passwrd in readers:
+        if username == user:
+            return False
+
+    cursor = mariadb_connection.cursor()
+    cursor.execute("INSERT INTO flask_coursework.readers \
+        (username,  password) VALUES (%s, %s)", (username, password))
+    cursor.close()
+    mariadb_connection.commit()
+
+    return True
 
 app = Flask(__name__)
 
@@ -101,6 +125,33 @@ def contact_page():
                                 radio_button=radio_button))
 
     return render_template('contact.html')
+
+@app.route("/registration", methods=['GET', 'POST'])
+def registration_page():
+    if request.method == 'POST':
+        username  = request.form['username']
+        password = request.form['password']
+
+        added = add_reader_to_db(username, password)
+
+        if added:
+            return redirect(url_for('readers_page'))
+        else:
+            return render_template('registration.html', exist=added)
+
+    return render_template('registration.html', exist=True)
+
+@app.route("/readers", methods=['GET', 'POST'])
+def readers_page():
+    if request.method == 'POST':
+        search_words = request.form['search']
+        radio_button = request.form['options']
+        return redirect(url_for('search_page', search_words=search_words,
+                                radio_button=radio_button))
+
+    readers = get_readers_from_db()
+    return render_template('readers.html', readers=readers)
+
 
 @app.route("/fantasy", methods=['GET', 'POST'])
 def fantasy_page():
@@ -177,3 +228,4 @@ def web_page():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+    mariadb_connection.close()
