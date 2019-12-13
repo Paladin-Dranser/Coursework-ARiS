@@ -28,10 +28,12 @@
         <li><a href="{{ url_for('main_page') }}">Home</a></li>
         <li class="active"><a href="{{ url_for('contact_page') }}">Contact</a></li>
       </ul>
-      <form method="POST">
-        <ul class="nav navbar-nav navbar-right">
-          <li><input name="search" placeholder="search"></li>
-        </ul>
+      <form method="POST" class="nav navbar-nav navbar-right">
+        <font color="red">
+          <input type="radio" name="options" value="book" checked /> book
+          <input type="radio" name="options" value="author" /> author
+        </font>
+          <input name="search" placeholder="search" />
       </form>
     </div>
   </div>
