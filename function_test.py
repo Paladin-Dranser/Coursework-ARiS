@@ -3,7 +3,6 @@ import requests
 import re
 
 BASE_URL = 'http://flask-coursework-1560154162.eu-central-1.elb.amazonaws.com/'
-
 # Check response code
 @pytest.mark.parametrize("url, response_code", [
         (BASE_URL, 200),
@@ -29,3 +28,12 @@ def test_search(search_words, radio_button):
 
     assert re.search(search_words, response.text, re.IGNORECASE), \
         'Search does not work ({type} {words} is not found)!'.format(type=radio_button, words=search_words)
+
+# Test we shouldn't sign up if username is exist
+def test_registration():
+    data = {'username': 'Iwant10', 'password': '123', 'registration': ''}
+    response = requests.post(url='{}registration'.format(BASE_URL),
+        data=data)
+
+    assert re.search('Try again', response.text, re.IGNORECASE), \
+        'You register a new user, but the username is existed!'
