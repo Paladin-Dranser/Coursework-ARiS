@@ -1,0 +1,13 @@
+{% for book in books_info | batch(3) %}
+<div class="container">    
+  <div class="row">
+    {% for name, link, cover, author, genre in book %}
+        <div class="panel-heading">{{ name }}</div>
+          <a href="{{ link }}">
+            <img src="{{ cover }}" class="img-responsive" style="width:100%" alt="Image">
+          </a>
+        <div class="panel-footer">{{ genre }} | {{ author }}</div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
